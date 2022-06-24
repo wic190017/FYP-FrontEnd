@@ -17,7 +17,7 @@ import HomeScreen from './src/screens/HomeScreen/HomeScreen';
 const App = () => {
   return (
     <SafeAreaView style={styles.root}>
-      <Navigation />
+      <HomeScreen />
     </SafeAreaView>
   );
 };
