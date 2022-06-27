@@ -6,8 +6,7 @@ import {
   FlatList,
   Alert,
 } from 'react-native';
-import React, {Component, useState, useEffect} from 'react';
-import SearchScreen from '../SearchScreen/SearchScreen';
+import React, { useState, useEffect} from 'react';
 import {useNavigation} from '@react-navigation/native';
 
 const AssetDetailScreen = ({route}) => {
@@ -21,10 +20,9 @@ const AssetDetailScreen = ({route}) => {
   }, []);
 
   const fetchPostsAPIinDetail = () => {
-    setDetailID(route.params.answer);
     let arr = [];
     const URL = 'http://192.168.0.159:8000/asset/' + route.params.answer + '/';
-    console.log(URL);
+  
     fetch(URL)
       .then(response => response.json())
       .then(json => {

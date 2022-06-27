@@ -9,7 +9,6 @@ import React, {Component, useState, useEffect} from 'react';
 import {useNavigation} from '@react-navigation/native';
 
 const EditAssetScreen = ({route}) => {
-  
   const [Asset, setAsset] = useState();
   const [Location, setLocation] = useState();
   const navigation = useNavigation();
@@ -32,6 +31,8 @@ const EditAssetScreen = ({route}) => {
   };
   return (
     <View style={styles.container}>
+      
+      <View><Text style={styles.EditAssetText}>Edit Asset Screen</Text></View>
       <Text style={styles.assets1}>Assets</Text>
       <Text style={styles.location1}>Location</Text>
       <TextInput
@@ -60,6 +61,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'rgba(230, 230, 230,1)',
+  },
+  EditAssetText: {
+    fontFamily: 'calibri-regular',
+    color: '#121212',
+    fontSize: 29,
+    marginTop: 5,
+    marginBottom: -50,
+    alignSelf: 'center',
   },
   assets1: {
     fontFamily: 'calibri-bold',

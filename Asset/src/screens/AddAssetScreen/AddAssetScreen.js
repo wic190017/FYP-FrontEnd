@@ -33,6 +33,7 @@ const AddAssetScreen = () => {
 
   return (
     <View style={styles.container}>
+      <View><Text style={styles.AddAssetText}>Add Asset Screen</Text></View>
       <View style={styles.loremIpsumRow}>
         <Text style={styles.loremIpsum}>Assets ：</Text>
         <View style={styles.textInputStack}>
@@ -70,6 +71,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'rgba(230, 230, 230,1)',
+  },
+  AddAssetText:{
+    fontFamily: 'calibri-regular',
+    color: '#121212',
+    fontSize: 29,
+    marginTop: 5,
+    marginBottom:-50,
+    alignSelf:'center',
   },
   loremIpsum: {
     fontFamily: 'calibri-regular',

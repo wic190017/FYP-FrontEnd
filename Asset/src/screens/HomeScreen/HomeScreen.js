@@ -4,20 +4,16 @@ import Logo from '../../../assets/images/FP1.png';
 import {useNavigation} from '@react-navigation/native';
 
 const HomeScreen = () => {
-
   const navigation = useNavigation();
-  const SearchPressed=()=>{
-    console.warn('SearchPress')
-    navigation.navigate('SearchScreen')
-  }
-
+  const SearchPressed = () => {
+    console.warn('SearchPress');
+    navigation.navigate('SearchScreen');
+  };
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity
-        onPress={SearchPressed}
-        style={styles.button1}>
-        <Text>Search Here</Text>
+      <TouchableOpacity onPress={SearchPressed} style={styles.button1}>
+        <Text style={styles.assetlist}>Asset List</Text>
       </TouchableOpacity>
       <Text style={styles.assets1}>Assets Tracking Home Screen</Text>
       <Image source={Logo} style={[styles.image]} resizeMode="contain" />
@@ -29,11 +25,15 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'rgba(230, 230, 230,1)',
   },
+  assetlist: {
+    alignSelf: 'center',
+    fontWeight: 'bold',
+    
+  },
   button1: {
     backgroundColor: 'white',
     height: 40,
-    width: 330,
-    paddingLeft: 20,
+    width: "97%",
     margin: 5,
     borderWidth: 1,
     justifyContent: 'center',

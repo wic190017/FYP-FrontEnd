@@ -17,11 +17,11 @@ const SearchScreen = () => {
   const [filterdData, setfilterdData] = useState();
   const [masterData, setmasterData] = useState();
   const [search, setsearch] = useState('');
-
   const navigation = useNavigation();
 
   useEffect(() => {
     fetchPostsAPI();
+
     return () => {};
   }, []);
 
@@ -30,21 +30,27 @@ const SearchScreen = () => {
     fetch(URL)
       .then(response => response.json())
       .then(json => {
-        setmasterData(json);
-        setfilterdData(json);
+        let cur_idx = 0;
+        let newData = json.map(item => {
+          cur_idx += 1;
+          return {...item, viewid: cur_idx};
+        });
+        setmasterData(newData);
+        setfilterdData(newData);
       })
       .catch(error => alert(error));
   };
 
   const searchFilter = text => {
     if (text) {
-      const newData = masterData.filter(item => {
+      let newData = masterData.filter(item => {
         const itemData = item.Asset
           ? item.Asset.toUpperCase()
           : ''.toUpperCase();
         const textData = text.toUpperCase();
         return itemData.indexOf(textData) > -1;
       });
+
       setfilterdData(newData);
       setsearch(text);
     } else {
@@ -53,13 +59,13 @@ const SearchScreen = () => {
     }
   };
 
-  const ItemView = ({item}) => {
 
+  const ItemView = ({item}) => {
     return (
       <TouchableOpacity onPress={() => pressHandler(item.id)}>
         <View>
           <Text style={styles.itemStyle}>
-            {item.id}
+            {item.viewid}
             {'. '}
             {item.Asset}
           </Text>
@@ -69,8 +75,8 @@ const SearchScreen = () => {
     );
   };
   const pressHandler = id => {
-    console.log(id)
-    navigation.navigate({name: 'AssetDetailScreen', params: {answer:id}});
+    console.log(id);
+    navigation.navigate({name: 'AssetDetailScreen', params: {answer: id}});
   };
 
   const ItemSeparatorView = () => {
@@ -122,7 +128,7 @@ const styles = StyleSheet.create({
   },
 
   noteStyle: {
-    marginLeft:25,
+    marginLeft: 25,
     color: '#800000',
   },
 
